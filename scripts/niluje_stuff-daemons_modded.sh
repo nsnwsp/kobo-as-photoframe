@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 # $Id: stuff-daemons.sh 18745 2021-09-19 18:49:54Z NiLuJe $
+# reference url: https://www.mobileread.com/forums/showthread.php?t=254214
 #
 
 # Handle inetd & dropbear... :)
