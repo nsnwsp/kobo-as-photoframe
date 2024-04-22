@@ -1,5 +1,5 @@
 #!/bin/sh
-# download a new picture once a day
+# download a new picture once a day (when kobo automatically exit from sleepmode, if not done already)
 
 #say hi
 echo "download_picture partito (logd)"
@@ -12,20 +12,15 @@ if [ $? -ne 0 ]; then
  exit
 fi
 
-# continuesly check if the current hour matches the desired hour
-desired_hour="22" # (24-hour format)
-desired_minute="30"
-
 while true; do
+current_date=$(date -d "$(date +%Y-%m-%d)" +%s)
 
-disp=false
-current_hour=$(date "+%H")
-current_minute=$(date "+%M")
+# read already present picture date of birth
+pic_date=$(date -d "$(stat -c %y /mnt/onboard/.kobo/screensaver/current.png | cut -c 1-10)" +%s)
 
-if [ "$current_hour" -eq "$desired_hour" -a "$current_minute" -eq "$desired_minute" ]; then
-   	echo "It's $desired_hour:$desired_minute o'clock!" >> /mnt/onboard/.photoframe/logd.txt
-    #check if is disp on libero and download new picture
-    wget $picture_url -O /mnt/onboard/.photoframe/downloaded.png && mv /mnt/onboard/.photoframe/downloaded.png /mnt/onboard/.kobo/screensaver/current.png  && echo "pic downloaded and moved" >> /mnt/onboard/.photoframe/logd.txt
+# if that picture is 1 day old, download the new one
+if [ "$pic_date" -ne "$current_date" ]; then 
+    wget $picture_url -O /mnt/onboard/.photoframe/downloaded.png && mv /mnt/onboard/.photoframe/downloaded.png /mnt/onboard/.kobo/screensaver/current.png && echo "pic downloaded and moved" >> /mnt/onboard/.photoframe/logd.txt
 fi
 
 echo "$current_hour:$current_minute" >> /mnt/onboard/.photoframe/logd.txt
