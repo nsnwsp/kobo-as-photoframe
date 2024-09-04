@@ -2,6 +2,8 @@
 ### !!! THIS README IS NOT YET COMPLETE
 
 
+![demo picture front](pics/front.png){width=450}![demo picture back](pics/back.png){width=300}
+
 ![[front.png|475]]![[back.png|325]]
 
 ### TL;DR
