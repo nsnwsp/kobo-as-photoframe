@@ -2,7 +2,7 @@
 ### !!! THIS README IS NOT YET COMPLETE
 
 
-![demo picture front](pics/front.png)![demo picture back](pics/back.png)
+![demo picture front](pics/front.png)  |  ![demo picture back](pics/back.png)
 
 ### TL;DR
 Reporpousing an old Kobo with a wonderful eink display; it automatically downloads the new picture once a day and refreshes the screen. (currently it has to be "awakened" with a magnet or by pressing the button, when needed.)
